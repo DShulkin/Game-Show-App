@@ -1,5 +1,5 @@
 const phrases = ['Lucius Seneca', 'Marcus Aurelius', 'Momento Mori', 'Friedrich Nietzsche', 'Amor Fati']
-const qwerty = document.querySelector('#qwerty')
+const keyBoard = document.querySelector('#qwerty')
 const ul = phrase.querySelector('ul')
 let missed = 0
 
@@ -36,24 +36,26 @@ const checkLetter = (button) => {
       li.style.transition = '0.5s ease-in-out'
       match = button.textContent
     } 
-
   })
   return(match)
 }
 
-qwerty.addEventListener('click', (e) => {
+
+keyBoard.addEventListener('click', (e) => {
   const button = e.target
   if (button.tagName === 'BUTTON' || button.className === 'chosen') {
-   
+
     button.className = 'chosen'
     button.disabled = true
-    console.log(button.textContent, 'CLICKED')
-
     const letterFound = checkLetter(button)
-    console.log(letterFound, 'FOUND')
+    //console.log(button.textContent, 'CLICKED')
+    //console.log(letterFound, 'FOUND')
 
-      if (letterFound === null || letterFound != button.textContent) { 
-       console.log(letterFound, 'NOT INCLUDED')
-      }
+    if (letterFound === null || letterFound != button.textContent) { 
+      const tries = document.querySelector('.tries')
+      tries.remove()
+      missed++
+      //console.log(letterFound, 'NOT INCLUDED')
+    }
   }
 })
