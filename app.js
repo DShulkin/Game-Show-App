@@ -34,7 +34,7 @@ const checkLetter = (button) => {
   let match = null
   const letters = ul.querySelectorAll('.letter')
   letters.forEach(function(li) {
-    if (button.textContent == li.textContent) {
+    if (button.textContent == li.textContent.toLowerCase()) {
       //console.log(li, 'LI')
       li.classList.add('show')
       li.style.transition = '0.5s ease-in-out'
