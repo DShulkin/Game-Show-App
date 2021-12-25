@@ -4,10 +4,10 @@ const overlay = document.querySelector('#overlay')
 const keyBoard = document.querySelector('#qwerty')
 const ul = phrase.querySelector('ul')
 let missed = 0
-let resetGame = 0
 
 
 startGame.addEventListener('click', () => {
+  // if (resetGame === 1) { resetGame() }
   overlay.style.display = 'none'
 })
 
@@ -25,7 +25,7 @@ const addPhraseToDisplay = (array) => {
     li.textContent = letter
     ul.appendChild(li)
     if (li.textContent !=' ') {li.className = 'letter'} else {li.className = 'space'} 
-})
+  })
 }
 addPhraseToDisplay(phrases)
 
@@ -54,7 +54,10 @@ keyBoard.addEventListener('click', (e) => {
     //console.log(button.textContent, 'CLICKED')
     //console.log(letterFound, 'FOUND')
     if (letterFound == null || letterFound != button.textContent) { 
-      document.querySelectorAll('.tries img')[missed].src='images/lostHeart.png'
+     const lost = document.querySelectorAll('.tries img')[missed]
+     lost.src='images/lostHeart.png'
+     lost.className = 'lost'
+     console.log(lost)
       missed++  
       //console.log(letterFound, 'NOT INCLUDED')
     }
@@ -70,7 +73,7 @@ const checkWin = () => {
   if (letterClass.length === showClass.length) {
     overlay.className = 'win'
     overlay.style.display = 'flex'
-    headline.textContent = 'You won!'
+    headline.textContent = 'You won!'  
     resetGame()
   } else if (missed >= 5) {
       overlay.className = 'lose'
@@ -81,23 +84,71 @@ const checkWin = () => {
 }
 
 
+
+const resetGame = () => {
+missed = 0
+ul.textContent = ''
+
+const chosenLetters = Array.from(document.querySelectorAll('.chosen'))
+chosenLetters.forEach(function(letter) {
+  letter.classList.remove('chosen')
+  letter.disabled = false
+})
+
+const lifeLost = document.querySelectorAll('.lost')
+lifeLost.forEach(function(restoreLife){
+   restoreLife.src='images/liveHeart.png'
+})
+
+getRandomPhraseAsArray(phrases)
+addPhraseToDisplay(phrases)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const resetGame = () => {
-//   missed = 0
-//   resetGame = 0
-//   ul.textContent = ''
+// missed = 0
+// resetGame = 0
+// ul.textContent = ''
 
-//   const chosenLetters = Array.from(document.querySelectorAll('.chosen'))
-//   resetLetters.forEach(function(letter,) {
-//     letter.classList.remove('chosen')
-//     letter.disabled = false
-//   })
+// const chosenLetters = Array.from(document.querySelectorAll('.chosen'))
+// chosenLetters.forEach(function(letter,) {
+//   letter.classList.remove('chosen')
+//   letter.disabled = false
+// })
 
-//   resetLetters(chosenLetters)
+// const lives = document.querySelectorAll('.tries img').src='images/lostHeart.png'
+// lives.forEach(function(life) {
+//   life.src='images/liveHeart.png'
+// })
 
-//   const resetPhrase = getRandomPhraseAsArray(phrases)
-//   addPhraseToDisplay(resetPhrase)
 
-
-//   addPhraseToDisplay(phrases)
-  
-// }
+// getRandomPhraseAsArray(phrases)
+// addPhraseToDisplay(phrases)
+//  }
