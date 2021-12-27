@@ -98,7 +98,6 @@ keyBoard.addEventListener('click', (e) => {
 // * depending on the outcome of the if statement will determine whether the game has been won or lost.
 // * once determination of the outcome is established, a screen will overlay the one in viewing with a button:
 //... 'Start Game' which will reset the game. Notice the function call at the end of both statements. 
-
 const checkWin = () => {
   const letterClass = document.querySelectorAll('.letter')
   const showClass = document.querySelectorAll('.show')
