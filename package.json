@@ -1,0 +1,23 @@
+{
+  "name": "game-show-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DShulkin/Game-Show-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DShulkin/Game-Show-App/issues"
+  },
+  "homepage": "https://github.com/DShulkin/Game-Show-App#readme",
+  "description": "",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
