@@ -1,0 +1,1 @@
+This project showcases a dynamic phrase guessing game that uses JavaScript to manage game state, user interaction, and win-loss logic. Random phrase generation, interactive keyboard input, letter matching, and scoreboard tracking work together to create a responsive and engaging gameplay experience within the browser.
